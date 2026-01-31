@@ -1,0 +1,55 @@
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+Schema::getColumnListing('domains')
+Schema::getColumnListing('domains')
+>>>
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::all()->toArray()
+App\Models\Domain::find(1)->last_checked_at
+tail -f storage/logs/laravel.log
+App\Models\Domain::count()
+class_exists('Admin\Http\Controllers\DomainCrudController')
+$role = Spatie\Permission\Models\Role::create(['name' => 'admin']);
+$user = App\Models\User::first(); // или создай нового
+$user->assignRole('admin');
+App\Models\User::count()
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::count()
+App\Models\Check::latest()->first()->toArray()
+App\Models\Check::where('domain_id', 1)->latest()->first()->toArray()
+App\Models\Domain::find(1)->last_checked_at
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::latest()->get()->toArray()
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::latest()->take(5)->get()->toArray()
+php artisan tinker
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::latest()->take(10)->get()->toArray()
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+(new App\Jobs\CheckDomainsJob())->handle(app(App\Interfaces\DomainRepositoryInterface::class), app(App\Services\CheckService::class));
+App\Models\Check::latest()->take(5)->get()->toArray()
+use Illuminate\Support\Facades\Cache;
+>>> Cache::forget('laravel-scheduler-check-domains-availability-last-run');
+use Illuminate\Support\Facades\Cache;
+Cache::forget('laravel-scheduler-check-domains-availability-last-run');
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+\App\Models\Domain::all()->pluck('url');
+\App\Models\Domain::all()->pluck('url');
+\App\Models\Domain::all()->pluck('url');
+\App\Models\Domain::all()->pluck('url');
+\App\Models\Domain::all()->pluck('name');
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());

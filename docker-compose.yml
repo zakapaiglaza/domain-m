@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    container_name: domain_monitor_app
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: domain_monitor_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - .docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8.0
+    container_name: domain_monitor_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: monitor
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

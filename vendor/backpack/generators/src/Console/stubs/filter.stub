@@ -1,0 +1,71 @@
+<li filter-name="{{ $filter->name }}"
+    filter-type="{{ $filter->type }}"
+    filter-key="{{ $filter->key }}"
+	filter-debounce="{{ $filter->options['debounce'] ?? 0 }}"
+	filter-init-function="{{ $filter->options['init_function'] ?? 'init__FILTER_NAME__Filter' }}"
+	class="nav-item {{ Request::get($filter->name)?'active':'' }}">
+    <a class="nav-link" href="javascript:void(0);">{{ $filter->label }}</a>
+  </li>
+
+
+@push('after_scripts')
+@bassetBlock('__FILTER_NAME__-filter.js')
+    <script>
+		// init function for simple filter
+		function init__FILTER_NAME__Filter(filter, filterNavbar) {
+
+			let filterName = filter.getAttribute('filter-name');
+			let filterKey = filter.getAttribute('filter-key');
+			let filterAnchor = filter.querySelector('a');
+			let filterDebounce = filter.getAttribute('filter-debounce');
+			let shouldUpdateUrl = true;
+
+			// prevent duplicate event bindings when the filter view re-renders
+			if (filter.getAttribute('data-filter-initialized') === 'true') {
+				return;
+			}
+			filter.setAttribute('data-filter-initialized', 'true');
+
+			filterAnchor.addEventListener('click', async function(e) {
+				e.preventDefault();
+				shouldUpdateUrl = true;
+
+				// get the filter value
+				let filterValue = filter.classList.contains('active') ? true : false;
+
+				switch (filterValue) {
+					case true:
+						filterValue = null;
+						break;
+					default:
+						filterValue = true;
+				}
+
+				if (filterValue) {
+					filter.classList.add('active');
+				}else{
+					filter.dispatchEvent(new CustomEvent('backpack:filter:clear'));
+				} 
+
+				document.dispatchEvent(new CustomEvent('backpack:filter:changed', {
+					detail: {
+						filterName: filterName,
+						filterValue: filterValue,
+						shouldUpdateUrl: shouldUpdateUrl,
+						debounce: filterDebounce,
+						componentId: filterNavbar.getAttribute('data-component-id'),
+					}
+				}));
+			});	
+
+			// clear filter event (used here and by the Remove all filters button)
+			filter.addEventListener('backpack:filter:clear', function(e) {
+				shouldUpdateUrl = !(e.detail && e.detail.clearAllFilters);
+				filter.classList.remove('active');
+			});
+		};			
+	</script>
+@endBassetBlock
+@endpush
+{{-- End of Extra CSS and JS --}}
+{{-- ########################################## --}}
