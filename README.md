@@ -15,18 +15,40 @@
     - Время ответа
     - Ошибки (если есть)
 
-## Технологии
-
-- Backend: Laravel 12+
-- База данных: MySQL 8+
-- Очереди: Laravel Queue (database)
-- Docker
-- Git
-
 ## Установка
 
 1. Клонировать репозиторий:
 ```bash
-git clone https://github.com/zakapaiglaza/domain-monitor.git
+git clone https://github.com/zakapaiglaza/domain-m.git
 
 cd domain-monitor
+
+cp .env.example .env
+
+docker compose exec app bash 
+
+    composer install
+    
+    npm install
+    
+    npm run build
+
+    php artisan key:generate
+
+    php artisan storage:link
+    
+    php artisan migrate
+
+    php artisan make:superadmin "login"
+
+    php artisan config:clear
+
+    php artisan cache:clear
+    
+    php artisan route:clear
+
+    php artisan queue:restart
+    
+    php artisan queue:work
+
+    tail -f storage/logs/laravel.log
