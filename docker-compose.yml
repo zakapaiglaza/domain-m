@@ -19,16 +19,27 @@ services:
     depends_on:
       - app
 
-  mysql:
-    image: mysql:8.0
-    container_name: domain_monitor_mysql
+#  mysql:
+#    image: mysql:8.0
+#    container_name: domain_monitor_mysql
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_DATABASE: monitor
+#      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+  postgres:
+    image: postgres:15
+    container_name: domain_monitor_postgres
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      MYSQL_DATABASE: monitor
-      MYSQL_ROOT_PASSWORD: root
+      POSTGRES_DB: monitor
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
-      - mysql_data:/var/lib/mysql
+      - pgsql:/var/lib/postgresql/data
 
 volumes:
-  mysql_data:
+  pgsql:

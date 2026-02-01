@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y \
 
 
 RUN docker-php-ext-install \
-    pdo_mysql \
     mbstring \
     exif \
     pcntl \
@@ -43,6 +42,6 @@ RUN mkdir -p storage/logs bootstrap/cache \
 
 USER www-data
 
-EXPOSE 10000
-
-CMD php artisan serve --host 0.0.0.0 --port $PORT
+#EXPOSE 10000
+#
+#CMD php artisan serve --host 0.0.0.0 --port $PORT

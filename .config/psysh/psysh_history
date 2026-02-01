@@ -53,3 +53,62 @@ dispatch(new \App\Jobs\CheckDomainsJob());
 dispatch(new \App\Jobs\CheckDomainsJob());
 dispatch(new \App\Jobs\CheckDomainsJob());
 dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+$user = \App\Models\User::first();
+dispatch(new \App\Jobs\CheckDomainsJob($user->id));
+DB::table('jobs')->get();
+$user = \App\Models\User::first();
+$data = [
+    'url' => 'https://google.com',
+    'interval_minutes' => 4,
+    'timeout_seconds' => 2,
+    'method' => 'GET',
+    'active' => true,
+    'user_id' => $user->id,
+];
+\App\Models\Domain::create($data);
+$user = \App\Models\User::first();
+$data = [
+    'url' => 'https://google.com',
+    'interval_minutes' => 4,
+    'timeout_seconds' => 2,
+    'method' => 'GET',
+    'active' => true,
+    'user_id' => $user->id,
+];
+\App\Models\Domain::create($data);
+$user = \App\Models\User::first();
+$data = [
+    'url' => 'https://google.com',
+    'interval_minutes' => 4,
+    'timeout_seconds' => 2,
+    'method' => 'GET',
+    'active' => true,
+    'user_id' => $user->id,
+];
+\App\Models\Domain::create($data);
+\App\Models\Domain::all()->pluck('url');
+$user = \App\Models\User::first();
+$data = [
+    'url' => 'https://zalupa.com', // новый уникальный URL
+    'interval_minutes' => 4,
+    'timeout_seconds' => 2,
+    'method' => 'GET',
+    'active' => true,
+    'user_id' => $user->id,
+];
+\App\Models\Domain::firstOrCreate(['url' => $data['url']], $data);
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+DB::table('jobs')->count();
+DB::table('failed_jobs')->count();
+dispatch(new \App\Jobs\CheckDomainsJob());
+DB::table('jobs')->get();
+DB::select("SELECT column_name, data_type FROM information_schema.columns WHERE table_name='jobs'");
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+dispatch(new \App\Jobs\CheckDomainsJob());
+tail -f storage/logs/laravel.log
+dispatch(new \App\Jobs\CheckDomainsJob());
+DB::table('jobs')->get();

@@ -3,6 +3,7 @@
 namespace Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DomainRequest extends FormRequest
 {
@@ -24,13 +25,15 @@ class DomainRequest extends FormRequest
      */
     public function rules(): array
     {
+        $domainId = $this->route('domain')?->id;
+
         return [
             'url' => [
                 'required',
                 'string',
                 'max:255',
                 'regex:/^https?:\/\/[^\s$.?#].[^\s]*$/i',
-                'unique:domains,url,' . $this->route('domain'),
+                Rule::unique('domains', 'url')->ignore($domainId),
             ],
             'user_id' => 'required|exists:users,id',
             'interval_minutes' => 'required|integer|min:1|max:1440',

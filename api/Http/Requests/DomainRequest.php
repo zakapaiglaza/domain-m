@@ -15,10 +15,15 @@ class DomainRequest extends FormRequest
 
     public function rules(): array
     {
-        $domainId = $this->route('domain')?->id;
+        $domainId = $this->route('id');
 
         return [
-            'name' => ['required', 'url', Rule::unique('domains', 'name')->ignore($domainId)],
+            'url' => [
+                'required',
+                'url',
+                Rule::unique('domains', 'url')->ignore($domainId),
+            ],
+
             'interval_minutes' => 'required|integer|min:1|max:1440',
             'timeout_seconds' => 'required|integer|min:1|max:60',
             'method' => 'required|in:' . implode(',', Domain::ALLOWED_METHODS),

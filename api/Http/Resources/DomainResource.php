@@ -10,7 +10,7 @@ class DomainResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'url' => $this->url,
             'interval_minutes' => $this->interval_minutes,
             'timeout_seconds' => $this->timeout_seconds,
             'method' => $this->method,
